@@ -1,0 +1,18 @@
+--- application.desktop.orig	2012-02-07 00:12:45.846976180 +0100
++++ qastools_0.17.1/qasconfig/share/application.desktop	2012-02-07 00:13:37.216694214 +0100
+@@ -3,12 +3,14 @@
+ Name=${PROGRAM_TITLE}
+ GenericName=ALSA configuration
+ GenericName[de]=ALSA-Konfiguration
++GenericName[it]=Configurazione ALSA
+ Exec=${PROGRAM_NAME}
+ Icon=${PROGRAM_NAME}
+ StartupNotify=false
+ Terminal=false
+-Categories=AudioVideo;Audio
++Categories=AudioVideo;Audio;
+ Comment=ALSA configuration browser
+ Comment[cs]=Prohlížeč nastavení ALSA
+ Comment[de]=ALSA-Konfigurationsbetrachter
++Comment[it]=Visualizzatore della configurazione ALSA
+ Comment[ru]=Просмотрщик конфигурации звуковой системы ALSA
