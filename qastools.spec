@@ -1,12 +1,9 @@
 Name:		qastools
-Version:	0.17.1
+Version:	0.17.2
 Release:	1
 Summary:	A collection of desktop applications for ALSA
 Url:		http://xwmw.org/qastools
 Source0:	http://sourceforge.net/projects/qastools/files/0.17.1/%{name}_%{version}.tar.xz
-Patch0:		%{name}-qasconfig-desktop-file.patch
-Patch1:		%{name}-qashctl-desktop-file.patch
-Patch2:		%{name}-qasmixer-desktop-file.patch
 License:	GPLv3
 Group:		Sound
 BuildRequires:	cmake
@@ -27,9 +24,6 @@ Features:
 
 %prep
 %setup -q -n %{name}_%{version}
-%patch0 -p1 -b .qasconfigdesk
-%patch1 -p1 -b .qashctldesk
-%patch2 -p1 -b .qasmixerdesk
 
 %build
 %cmake
@@ -41,6 +35,9 @@ Features:
 # make the .desktop file compliant with freedesktop specs
 for i in qasconfig qashctl qasmixer;
 do
+desktop-file-install --add-category="X-MandrivaLinux-Sound" \
+%{buildroot}%{_datadir}/applications/$i.desktop
+
 desktop-file-validate %{buildroot}%{_datadir}/applications/$i.desktop
 done
 
@@ -64,3 +61,10 @@ rm -f %{buildroot}%{_datadir}/%{name}/COPYING
 %{_datadir}/%{name}/icons/*.svg
 %{_datadir}/%{name}/widgets/sw_joined_*.svg
 %{_datadir}/%{name}/l10n/%{name}_*.qm
+
+
+%changelog
+* Tue Mar 13 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.17.1-1
++ Revision: 784641
+- imported package qastools
+
