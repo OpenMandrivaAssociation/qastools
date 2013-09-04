@@ -8,7 +8,7 @@ License:	GPLv3
 Group:		Sound
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
-BuildRequires:	libalsa-devel
+BuildRequires:	alsa-oss-devel
 BuildRequires:	desktop-file-utils
 
 Obsoletes:	qasmixer <= 0.15
@@ -35,7 +35,7 @@ Features:
 # make the .desktop file compliant with freedesktop specs
 for i in qasconfig qashctl qasmixer;
 do
-desktop-file-install --add-category="X-MandrivaLinux-Sound" \
+desktop-file-install --add-category="X-OpenMandrivaLinux-Sound" \
 %{buildroot}%{_datadir}/applications/$i.desktop
 
 desktop-file-validate %{buildroot}%{_datadir}/applications/$i.desktop
