@@ -1,11 +1,11 @@
 Summary:	A collection of desktop applications for ALSA
 Name:		qastools
-Version:	0.17.2
-Release:	7
+Version:	0.18.0
+Release:	1
 License:	GPLv3
 Group:		Sound
 Url:		http://xwmw.org/qastools
-Source0:	http://sourceforge.net/projects/qastools/files/0.17.1/%{name}_%{version}.tar.xz
+Source0:	http://sourceforge.net/projects/qastools/files/0.17.1/%{name}_%{version}.tar.bz2
 BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
 BuildRequires:	alsa-oss-devel
