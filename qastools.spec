@@ -10,6 +10,7 @@ BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
 BuildRequires:	alsa-oss-devel
 BuildRequires:	qt4-devel
+BuildRequires:	pkgconfig(udev)
 
 %description
 %{summary}
