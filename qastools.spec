@@ -1,15 +1,16 @@
 Summary:	A collection of desktop applications for ALSA
 Name:		qastools
-Version:	0.18.0
-Release:	3
+Version:	0.21.0
+Release:	1
 License:	GPLv3
 Group:		Sound
 Url:		http://xwmw.org/qastools
-Source0:	http://sourceforge.net/projects/qastools/files/0.17.1/%{name}_%{version}.tar.bz2
-BuildRequires:	cmake
+Source0:	http://sourceforge.net/projects/qastools/files/%{version}/%{name}_%{version}.tar.bz2
+BuildRequires:	cmake ninja
+BuildRequires:	qmake5
+BuildRequires:	cmake(Qt5Core) cmake(Qt5Gui) cmake(Qt5Network) cmake(Qt5Svg) cmake(Qt5Widgets)
 BuildRequires:	desktop-file-utils
 BuildRequires:	alsa-oss-devel
-BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(udev)
 
 %description
@@ -23,11 +24,11 @@ Features:
 %setup -qn %{name}_%{version}
 
 %build
-%cmake
-%make
+%cmake_qt5 -G Ninja
+%ninja
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
 # make the .desktop file compliant with freedesktop specs
 for i in qasconfig qashctl qasmixer;
