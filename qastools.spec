@@ -11,8 +11,8 @@ BuildRequires:	qmake5
 BuildRequires:	cmake(Qt5Core) cmake(Qt5Gui) cmake(Qt5Network) cmake(Qt5Svg) cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	desktop-file-utils
-BuildRequires:	alsa-oss-devel
 BuildRequires:	pkgconfig(udev)
+BuildRequires:	pkgconfig(alsa)
 
 %description
 %{summary}
