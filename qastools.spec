@@ -1,7 +1,7 @@
 Summary:	A collection of desktop applications for ALSA
 Name:		qastools
 Version:	0.23.0
-Release:	2
+Release:	3
 License:	GPLv3
 Group:		Sound
 Url:		http://xwmw.org/qastools
