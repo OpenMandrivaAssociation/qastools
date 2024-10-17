@@ -4,7 +4,7 @@ Version:	0.23.0
 Release:	3
 License:	GPLv3
 Group:		Sound
-Url:		http://xwmw.org/qastools
+Url:		https://xwmw.org/qastools
 Source0:	http://sourceforge.net/projects/qastools/files/%{version}/%{name}-v%{version}.tar.bz2
 BuildRequires:	cmake ninja
 BuildRequires:	qmake5
