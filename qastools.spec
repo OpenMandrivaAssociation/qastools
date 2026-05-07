@@ -1,48 +1,37 @@
 Summary:	A collection of desktop applications for ALSA
-Name:		qastools
-Version:	0.23.0
-Release:	3
-License:	GPLv3
-Group:		Sound
-Url:		https://xwmw.org/qastools
-Source0:	http://sourceforge.net/projects/qastools/files/%{version}/%{name}-v%{version}.tar.bz2
-BuildRequires:	cmake ninja
-BuildRequires:	qmake5
-BuildRequires:	cmake(Qt5Core) cmake(Qt5Gui) cmake(Qt5Network) cmake(Qt5Svg) cmake(Qt5Widgets)
-BuildRequires:	cmake(Qt5LinguistTools)
-BuildRequires:	desktop-file-utils
-BuildRequires:	pkgconfig(udev)
-BuildRequires:	pkgconfig(alsa)
+Name:	qastools
+Version:	1.4.0
+Release:	1
+License:	GPLv3+
+Group:	Sound
+Url:		https://gitlab.com/sebholt/qastools
+Source0:	https://gitlab.com/sebholt/qastools/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+BuildRequires:		cmake >= 3.25
+BuildRequires:		desktop-file-utils
+BuildRequires:		glslc
+BuildRequires:		ninja
+BuildRequires:		qmake-qt6
+BuildRequires:		cmake(Qt6Core)
+BuildRequires:		cmake(Qt6Core5Compat)
+BuildRequires:		cmake(Qt6DBus)
+BuildRequires:		cmake(Qt6Gui)
+BuildRequires:		cmake(Qt6Network)
+BuildRequires:		cmake(Qt6Svg)
+BuildRequires:		cmake(Qt6Widgets)
+BuildRequires:		cmake(Qt6LinguistTools)
+BuildRequires:		pkgconfig(alsa)
+BuildRequires:		pkgconfig(gl)
+BuildRequires:		pkgconfig(glu)
+BuildRequires:		pkgconfig(udev)
+BuildRequires:		pkgconfig(vulkan)
+BuildRequires:		pkgconfig(xkbcommon)
 
 %description
-%{summary}
-
-Features:
-   * Desktop ALSA mixer applications
-   * Desktop ALSA configuration browser
-
-%prep
-%setup -qn %{name}-v%{version}
-
-%build
-%cmake_qt5 -G Ninja
-%ninja
-
-%install
-%ninja_install -C build
-
-# make the .desktop file compliant with freedesktop specs
-for i in qasconfig qashctl qasmixer;
-do
-desktop-file-install \
-	--add-category="X-OpenMandrivaLinux-Sound" \
-	%{buildroot}%{_datadir}/applications/$i.desktop
-
-desktop-file-validate %{buildroot}%{_datadir}/applications/$i.desktop
-done
-
-# it'll be %%doc'ed
-rm -f %{buildroot}%{_datadir}/%{name}/COPYING
+A collection of Qt-based mixer and setup tools for ALSA.
+At the moment there are three applications:
+* QasMixer - A graphical mixer similiar to alsamixer.
+* QasHctl - A graphical mixer for ALSA's "High level Control Interface".
+* QasConfig - A viewer for ALSA's configuration tree.
 
 %files
 %doc CHANGELOG COPYING README.md
@@ -61,3 +50,20 @@ rm -f %{buildroot}%{_datadir}/%{name}/COPYING
 %{_datadir}/metainfo/qasmixer.appdata.xml
 %{_datadir}/metainfo/qasconfig.appdata.xml
 %{_datadir}/metainfo/qashctl.appdata.xml
+
+#-----------------------------------------------------------------------------
+   
+%prep
+%autosetup -n %{name}-v%{version} -p1
+
+
+%build
+%cmake -G Ninja
+%ninja_build
+
+
+%install
+%ninja_install -C build
+
+# It'll be %%doc'ed
+rm -f %{buildroot}%{_datadir}/%{name}/COPYING
