@@ -1,6 +1,6 @@
 Summary:	A collection of desktop applications for ALSA
 Name:	qastools
-Version:	1.4.0
+Version:	1.5.0
 Release:	1
 License:	GPLv3+
 Group:	Sound
@@ -54,7 +54,7 @@ At the moment there are three applications:
 #-----------------------------------------------------------------------------
    
 %prep
-%autosetup -n %{name}-v%{version} -p1
+%autosetup -n qastools-v1.5.0 -p1
 
 
 %build
